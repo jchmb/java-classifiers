@@ -1,11 +1,16 @@
 package nl.jchmb.classifiers.feature;
 
-import nl.jchmb.classifiers.Observation;
+import nl.jchmb.classifiers.observation.Observation;
 
-public class RawFeature implements Feature {
+public class RawFeature<T extends Observation<Float>> implements Feature<T, Float> {
+	private String key;
+	
+	public RawFeature(String key) {
+		this.key = key;
+	}
+	
 	@Override
-	public float calculate(Observation observation) {
-		// TODO Auto-generated method stub
-		return 0;
+	public float calculate(T observation) {
+		return observation.getData(key);
 	}
 }
